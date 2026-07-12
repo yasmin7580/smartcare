@@ -2,11 +2,10 @@
 /* @plugin "daisyui"; */
 
 @plugin "daisyui" {
-   themes: light --default;
- }
-
-section{
-  max-width: 1400px;
+  themes: light --default;
 }
 
-
+section {
+  max-width: 1400px;
+  margin: auto;
+}

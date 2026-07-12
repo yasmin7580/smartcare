@@ -4,11 +4,13 @@ import useAuth from '../Hooks/useAuth';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.init';
 import Swal from 'sweetalert2'
+import { useState } from 'react';
 
 
 const Header = () => {
 
     const { user } = useAuth()
+    const [dropDown, setDropdown] = useState<boolean>(false)
     console.log(user)
 
 
@@ -52,7 +54,8 @@ const Header = () => {
 
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        // <section>
+        <div className="navbar bg-base-100 shadow-sm w-full">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,23 +79,49 @@ const Header = () => {
                 </ul>
             </div>
 
-            {
-                user ?
+            <div className='navbar-end'>
 
+                {
+                    user ?
 
-                    <div className='flex navbar-end'>
-                        <button onClick={handleLogout} className='btn bg-red-600 text-white '>LogOut</button>
+                        <div className='relative'>
+                            <img
+                                onClick={() => setDropdown(!dropDown)}
+                                className='h-10 w-10 rounded-full shadow object-cover cursor-pointer'
+                                src={user.photoURL || ""} alt="User" />
+                                {
+                                    dropDown && (
+                                        <div className='absolute right-0 mt-2 w-48 bg-base-100 border border-gray-200 rounded-box shadow-lg z-50'>
+                                            <div className='p-4 border-b border-gray-200'>
+                                                <div className='flex items-center gap-3'>
+                                                    <img
+                                                        className='h-12 w-12 rounded-full object-cover'
+                                                        src={user.photoURL || ""} alt="User" />
+                                                    <div className='flex-1'>
+                                                        <p className='font-semibold text-sm'>{user.displayName || "User"}</p>
+                                                        <p className='text-xs text-gray-500'>{user.email}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul className='menu'>
+                                                <li><Link to="/dashboard">Dashboard</Link></li>
+                                                <li><a onClick={handleLogout}>Logout</a></li>
+                                            </ul>
+                                        </div>
+                                    )
+                                }
+                        </div>
+                        :
 
-                    </div>
-                    :
+                        <div className="flex gap-2">
+                            <Link to="/login"><button className='btn bg-base-200'>Login</button></Link>
+                            <Link to="/register"><button className='btn bg-red-600 text-white'>Register</button></Link>
+                        </div>
 
-                    <div className="navbar-end flex gap-2">
-                        <Link to="/login"><button className='btn'>Login</button></Link>
-                        <Link to="/register"><button className='btn bg-red-600 text-white'>Register</button></Link>
-                    </div>
-
-            }
+                }
+            </div>
         </div>
+        // </section >
     );
 };
 
