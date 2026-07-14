@@ -8,10 +8,12 @@ import { auth } from '../../firebase.init';
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [user, setUser] = useState<User | null>(null)
+    const [userLoading, setUserLoading] = useState<boolean>(true)
     useEffect(() => {
 
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
+            setUserLoading(false)
 
         })
         return () => unsubscribe()
@@ -32,6 +34,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         user,
         theme,
         handleTheme,
+        userLoading
     }
 
 
