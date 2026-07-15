@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { ArrowUpSquare } from 'lucide-react';
-import React from 'react';
+// import { ArrowUpSquare } from 'lucide-react';
+// import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 type Clinic = {
     _id: string,

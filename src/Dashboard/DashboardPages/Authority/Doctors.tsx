@@ -5,8 +5,8 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { Plus } from 'lucide-react';
-import { format } from 'date-fns';
-import { data } from 'react-router';
+// import { format } from 'date-fns';
+// import { data } from 'react-router';
 type Doctor = {
     _id: string;
     availableFrom: string;

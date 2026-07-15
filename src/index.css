@@ -9,3 +9,19 @@ section {
   max-width: 1400px;
   margin: auto;
 }
+
+@keyframes arrow-move {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-arrow-move {
+  animation: arrow-move 1.2s ease-in-out infinite;
+}

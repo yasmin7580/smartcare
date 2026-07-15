@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
-import useAuth from '../../../Hooks/useAuth';
+// import React from 'react';
+// import useAuth from '../../../Hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
 type User = {
     _id: string;

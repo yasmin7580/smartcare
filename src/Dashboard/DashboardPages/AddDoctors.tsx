@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 // 1-doctors name 
 // 2-doctors image

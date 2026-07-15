@@ -19,6 +19,9 @@ import MyProfile from "../Dashboard/DashboardPages/User/MyProfile";
 import Home from "../Pages/Home/Home";
 // import Hospitals from "../Pages/User/Clinics";
 import Clinics from "../Pages/User/Clinics";
+import Contact from "../Pages/Contact";
+import FindDoctors from "../Pages/FindDoctors";
+import ClinicsDetails from "../Pages/User/ClinicsDetails";
 // import type PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 
@@ -35,6 +38,18 @@ export const router = createBrowserRouter([
             {
                 path: "clinics",
                 Component: Clinics
+            },
+            {
+                path: "contacts",
+                Component: Contact
+            },
+            {
+                path: "find-doctors",
+                Component: FindDoctors
+            },
+            {
+                path: "clinic/:id",
+                Component: ClinicsDetails
             },
 
         ]
