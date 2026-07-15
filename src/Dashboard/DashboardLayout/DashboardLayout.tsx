@@ -3,6 +3,7 @@ import { Menu } from 'lucide-react';
 import { NavLink, Outlet } from 'react-router';
 import "./DashboardLayout.css"
 import useRole from '../../Hooks/useRole';
+import { Toaster } from 'react-hot-toast';
 
 const DashboardLayout = () => {
     const { role, roleLoading } = useRole()
@@ -11,6 +12,7 @@ const DashboardLayout = () => {
     }
     return (
         <div className="drawer lg:drawer-open">
+            <Toaster />
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}

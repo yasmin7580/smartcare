@@ -22,6 +22,7 @@ import Clinics from "../Pages/User/Clinics";
 import Contact from "../Pages/Contact";
 import FindDoctors from "../Pages/FindDoctors";
 import ClinicsDetails from "../Pages/User/ClinicsDetails";
+import DoctorDetails from "../Pages/DoctorDetails";
 // import type PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: "clinic/:id",
                 Component: ClinicsDetails
+            },
+            {
+                path: "doctor/:id",
+                Component: DoctorDetails
             },
 
         ]

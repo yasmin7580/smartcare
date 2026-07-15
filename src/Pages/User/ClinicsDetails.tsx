@@ -17,6 +17,7 @@ type Doctor = {
 };
 const ClinicsDetails = () => {
     const { id } = useParams();
+    const modalElement = useRef<HTMLDialogElement | null>(null)
 
     const { data: details, isLoading } = useQuery({
         queryKey: ["detail", id],

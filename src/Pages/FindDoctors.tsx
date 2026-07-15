@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { CalendarDays, Clock, Filter, X } from "lucide-react";
+import { Link } from "react-router";
+import Loading from "../Components/Loading";
+import AppointmentModal from "../Components/AppointmentModal";
 
 type Doctor = {
     _id: string;
@@ -18,7 +21,9 @@ type Doctor = {
 
 const FindDoctors = () => {
 
+    const modalElement = useRef<HTMLDialogElement | null>(null)
     const [showFilter, setShowFilter] = useState(false);
+    const [doctor, setDoctor] = useState<object | null>(null)
 
 
     const { data: doctors, isLoading } = useQuery({
@@ -29,10 +34,17 @@ const FindDoctors = () => {
         },
 
     });
-
+    if (isLoading) {
+        return <Loading />
+    }
+    const handleModal = (data: object) => {
+        setDoctor(data)
+        modalElement.current?.showModal()
+    }
 
     return (
         <div className="min-h-screen bg-slate-50 px-4 py-10">
+            <AppointmentModal modalRef={modalElement} data={doctor}></AppointmentModal>
 
             <div className="max-w-7xl mx-auto">
                 <div className="mb-8">
@@ -97,6 +109,7 @@ const FindDoctors = () => {
 
                                     <button
                                         onClick={() => setShowFilter(false)}
+                                        className=" cursor-pointer"
                                     >
                                         <X size={22} />
                                     </button>
@@ -110,7 +123,7 @@ const FindDoctors = () => {
 
                                     {/* Specialist */}
                                     <select
-                                        className="select w-full border border-gray-200 rounded-xl px-4 py-3 bg-white " defaultValue={"Select Specialist"} >
+                                        className="select w-full border border-gray-200 rounded-xl px-4 py-6   bg-white  " defaultValue={"Select Specialist"} >
 
                                         <option disabled>
                                             Select Specialist
@@ -291,14 +304,18 @@ const FindDoctors = () => {
                                 </div>
 
 
-                                <div className="flex gap-2">
+                                <div className="grid grid-cols-2 gap-2">
+                                    <Link
+                                        to={`/doctor/${doctor._id}`}
+                                    >
+                                        <button
+                                            className="w-full mt-6  bg-red-600  text-white py-3  rounded-xl font-semibold  hover:bg-red-700 transition hover:shadow-lg " >
+                                            View
+                                        </button>
+                                    </Link>
 
                                     <button
-                                        className="w-full mt-6  bg-red-600  text-white py-3  rounded-xl font-semibold  hover:bg-red-700 transition hover:shadow-lg " >
-                                        View
-                                    </button>
-
-                                    <button
+                                        onClick={() => handleModal(doctor)}
                                         className="w-full mt-6  bg-red-600  text-white py-3  rounded-xl font-semibold  hover:bg-red-700 transition hover:shadow-lg " >
                                         Appointment
                                     </button>

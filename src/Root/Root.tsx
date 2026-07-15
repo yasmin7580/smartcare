@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import Footer from "../SharedComponents/Footer";
 import Header from "../SharedComponents/Header";
+import { Toaster } from "react-hot-toast";
 
 const Root = () => {
     const { theme } = useAuth()
@@ -13,6 +14,7 @@ const Root = () => {
                 <Outlet />
             </div>
             <Footer />
+            <Toaster/>
         </div>
     );
 };
