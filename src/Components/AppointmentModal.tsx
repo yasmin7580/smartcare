@@ -40,7 +40,7 @@ const AppointmentModal = ({ modalRef, data }: AppointmentModalProps) => {
             }
             toast.dismiss(toastId)
             toast.success("Appointment Submitted")
-            navigate("/dashboard/my-appointments")
+            // navigate("/dashboard/my-appointments")
         }
         catch (error: any) {
             toast.dismiss(toastId)

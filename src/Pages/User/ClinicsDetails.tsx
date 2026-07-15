@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router";
 import { CalendarDays, Clock, MapPin, Phone, Stethoscope } from "lucide-react";
+import { useRef, useState } from "react";
+import AppointmentModal from "../../Components/AppointmentModal";
 
 type Doctor = {
     _id: string;
@@ -35,6 +37,7 @@ const ClinicsDetails = () => {
         enabled: !!id,
     });
 
+    const [doctor, setDoctor] = useState<object | null>(null)
 
     if (isLoading) {
         return (
@@ -47,10 +50,16 @@ const ClinicsDetails = () => {
 
     const clinic = details?.clinic;
     const doctors = details?.doctors || []
+    const handleModal = (data: object) => {
+        modalElement.current?.showModal()
+        setDoctor(data)
+
+    }
 
 
     return (
         <div className="min-h-screen bg-slate-50 px-4 py-10">
+            <AppointmentModal modalRef={modalElement} data={doctor}></AppointmentModal>
 
             <div className="max-w-6xl mx-auto">
 
@@ -196,6 +205,7 @@ const ClinicsDetails = () => {
 
 
                                     <button
+                                        onClick={() => handleModal(doctor)}
                                         className="
                                         w-full mt-6 
                                         bg-red-600 
