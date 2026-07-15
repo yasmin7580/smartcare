@@ -23,6 +23,7 @@ import Contact from "../Pages/Contact";
 import FindDoctors from "../Pages/FindDoctors";
 import ClinicsDetails from "../Pages/User/ClinicsDetails";
 import DoctorDetails from "../Pages/DoctorDetails";
+import TotalAppointment from "../Dashboard/DashboardPages/Authority/TotalAppointment";
 // import type PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 
@@ -100,6 +101,10 @@ export const router = createBrowserRouter([
             {
                 path: "add-doctors",
                 element: <AuthorityRoute><AddDoctors /></AuthorityRoute>
+            },
+            {
+                path: "total-appointments",
+                element: <AuthorityRoute><TotalAppointment></TotalAppointment></AuthorityRoute>
             },
             // admin
             {

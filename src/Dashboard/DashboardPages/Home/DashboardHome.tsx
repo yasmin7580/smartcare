@@ -1,6 +1,7 @@
 // import React from 'react';
 import useRole from '../../../Hooks/useRole';
 import { Navigate } from 'react-router';
+import AdminHome from '../Admin/AdminHome';
 
 const DashboardHome = () => {
     // const navigate = useNavigate()
@@ -11,6 +12,11 @@ const DashboardHome = () => {
     if (role === "user") {
         // navigate()
         return <Navigate to={"/dashboard/my-appointment"}></Navigate>
+
+    }
+    if (role === "admin") {
+        // navigate()
+        return <AdminHome></AdminHome>
 
     }
     return (
