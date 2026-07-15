@@ -18,8 +18,8 @@ const Header = () => {
 
     const links = <>
 
-        <li><NavLink to="/">Home</NavLink></li>
-        {role !== "user" || roleLoading &&
+        <li><NavLink to="/" >Home</NavLink></li>
+        {role === "user" && !roleLoading &&
             <>
                 <li> <NavLink to="find-doctors">Find Doctors</NavLink></li>
                 <li><NavLink to="clinics">Clinics</NavLink></li>
@@ -69,7 +69,7 @@ const Header = () => {
                     </div>
                     <ul
                         tabIndex={-1}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow ">
                         {
                             links
                         }

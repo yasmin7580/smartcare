@@ -4,7 +4,7 @@ import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
 // import AddDoctors from "../Dashboard/DashboardPages/AddDoctors";
-import DashboardHome from "../Dashboard/DashboardPages/Authority/Home/DashboardHome";
+import DashboardHome from "../Dashboard/DashboardPages/Home/DashboardHome";
 import AddClinic from "../Dashboard/DashboardPages/Authority/AddClinic";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 import AddDoctors from "../Dashboard/DashboardPages/Authority/AddDoctors";

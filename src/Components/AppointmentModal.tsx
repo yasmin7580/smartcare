@@ -2,7 +2,9 @@ import axios from "axios";
 import { format } from "date-fns";
 import type { RefObject } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
+import useAuth from "../Hooks/useAuth";
+// import { WavesHorizontal } from "lucide-react";
 type Data = {
     _id?: string
     name?: string
@@ -16,8 +18,9 @@ type AppointmentModalProps = {
 };
 
 const AppointmentModal = ({ modalRef, data }: AppointmentModalProps) => {
+    const { user, userLoading } = useAuth()
     console.log(data)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const appointmentDetails = {
         doctorId: data?._id,
         doctorName: data?.name,
@@ -30,6 +33,9 @@ const AppointmentModal = ({ modalRef, data }: AppointmentModalProps) => {
         modalRef.current?.close()
         const toastId = toast.loading("Appointment Submitting")
         const formData = Object.fromEntries(new FormData(e.currentTarget))
+        formData.status = 'scheduled'
+        formData.userEmail = user?.email || ""
+
 
         console.log({ ...formData, ...appointmentDetails })
         try {
@@ -47,9 +53,8 @@ const AppointmentModal = ({ modalRef, data }: AppointmentModalProps) => {
             toast.error(error.message || 'Something went wrong')
         }
 
-
-
     }
+
 
     return (
         <dialog ref={modalRef} className="modal">
@@ -141,7 +146,9 @@ const AppointmentModal = ({ modalRef, data }: AppointmentModalProps) => {
                             name="appointmentDate"
                         />
                     </div>
-                    <button className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition">
+                    <button
+                        disabled={!user?.email || userLoading}
+                        className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition">
                         Confirm Appointment
                     </button>
                 </form>

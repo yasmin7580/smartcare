@@ -28,7 +28,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setTheme(mode)
 
     }
-    console.log(user)
+    // console.log(user)
 
     const context = {
         user,

@@ -14,12 +14,12 @@ const DashboardLayout = () => {
         <div className="drawer lg:drawer-open">
             <Toaster />
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content flex flex-col p-5">
                 {/* Page content here */}
-                <Outlet />
                 <label htmlFor="my-drawer-3" className="btn drawer-button justify-start lg:hidden w-full">
                     <Menu />
                 </label>
+                <Outlet />
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -28,10 +28,8 @@ const DashboardLayout = () => {
                         role === "user" &&
                         <>
                             <li><NavLink to={"."} end >MyAppointment</NavLink></li>
-                            <li><NavLink to={"."}  >MyProfile</NavLink></li>
+                            <li><NavLink to={"my-profile"}  >MyProfile</NavLink></li>
                         </>
-
-
                     }
 
 
