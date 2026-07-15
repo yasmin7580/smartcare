@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                         <>
                             <li><NavLink to={"all-users"} end >All Users</NavLink></li>
                             <li><NavLink to={"medical-authority"}  >Medical Authority</NavLink></li>
-                            
+
                         </>
                     }
 
