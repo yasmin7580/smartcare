@@ -5,20 +5,26 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.init';
 import Swal from 'sweetalert2'
 import { useState } from 'react';
+import useRole from '../Hooks/useRole';
 
 
 const Header = () => {
 
     const { user } = useAuth()
     const [dropDown, setDropdown] = useState<boolean>(false)
+    const { role, roleLoading } = useRole()
     console.log(user)
 
 
     const links = <>
 
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="find-doctors">Find Doctors</NavLink></li>
-        <li><NavLink to="clinics">Clinics</NavLink></li>
+        {role !== "user" || roleLoading &&
+            <>
+                <li> <NavLink to="find-doctors">Find Doctors</NavLink></li>
+                <li><NavLink to="clinics">Clinics</NavLink></li>
+            </>
+        }
         <li><NavLink to="contacts">Contacts</NavLink></li>
 
     </>
@@ -89,27 +95,27 @@ const Header = () => {
                                 onClick={() => setDropdown(!dropDown)}
                                 className='h-10 w-10 rounded-full shadow object-cover cursor-pointer'
                                 src={user.photoURL || ""} alt="User" />
-                                {
-                                    dropDown && (
-                                        <div className='absolute right-0 mt-2 w-48 bg-base-100 border border-gray-200 rounded-box shadow-lg z-50'>
-                                            <div className='p-4 border-b border-gray-200'>
-                                                <div className='flex items-center gap-3'>
-                                                    <img
-                                                        className='h-12 w-12 rounded-full object-cover'
-                                                        src={user.photoURL || ""} alt="User" />
-                                                    <div className='flex-1'>
-                                                        <p className='font-semibold text-sm'>{user.displayName || "User"}</p>
-                                                        <p className='text-xs text-gray-500'>{user.email}</p>
-                                                    </div>
+                            {
+                                dropDown && (
+                                    <div className='absolute right-0 mt-2 w-48 bg-base-100 border border-gray-200 rounded-box shadow-lg z-50'>
+                                        <div className='p-4 border-b border-gray-200'>
+                                            <div className='flex items-center gap-3'>
+                                                <img
+                                                    className='h-12 w-12 rounded-full object-cover'
+                                                    src={user.photoURL || ""} alt="User" />
+                                                <div className='flex-1'>
+                                                    <p className='font-semibold text-sm'>{user.displayName || "User"}</p>
+                                                    <p className='text-xs text-gray-500'>{user.email}</p>
                                                 </div>
                                             </div>
-                                            <ul className='menu'>
-                                                <li><Link to="/dashboard">Dashboard</Link></li>
-                                                <li><a onClick={handleLogout}>Logout</a></li>
-                                            </ul>
                                         </div>
-                                    )
-                                }
+                                        <ul className='menu'>
+                                            <li><Link to="/dashboard">Dashboard</Link></li>
+                                            <li><a onClick={handleLogout}>Logout</a></li>
+                                        </ul>
+                                    </div>
+                                )
+                            }
                         </div>
                         :
 

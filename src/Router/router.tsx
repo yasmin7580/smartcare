@@ -38,23 +38,27 @@ export const router = createBrowserRouter([
             },
             {
                 path: "clinics",
-                Component: Clinics
+                element: <UserRoute><Clinics></Clinics></UserRoute>
+            },
+
+            {
+                path: "find-doctors",
+                element: <UserRoute><FindDoctors></FindDoctors></UserRoute>
+
+            },
+            {
+                path: "clinic/:id",
+                element: <UserRoute><ClinicsDetails></ClinicsDetails></UserRoute>
+
+            },
+            {
+                path: "doctor/:id",
+                element: <UserRoute><DoctorDetails></DoctorDetails></UserRoute>
+
             },
             {
                 path: "contacts",
                 Component: Contact
-            },
-            {
-                path: "find-doctors",
-                Component: FindDoctors
-            },
-            {
-                path: "clinic/:id",
-                Component: ClinicsDetails
-            },
-            {
-                path: "doctor/:id",
-                Component: DoctorDetails
             },
 
         ]
