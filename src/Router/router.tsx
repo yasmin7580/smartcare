@@ -24,6 +24,7 @@ import FindDoctors from "../Pages/FindDoctors";
 import ClinicsDetails from "../Pages/User/ClinicsDetails";
 import DoctorDetails from "../Pages/DoctorDetails";
 import TotalAppointment from "../Dashboard/DashboardPages/Authority/TotalAppointment";
+import About from "../Pages/About";
 // import type PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path: "contacts",
                 Component: Contact
+            },
+            {
+                path: "about",
+                Component: About
             },
 
         ]

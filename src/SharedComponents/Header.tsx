@@ -19,6 +19,7 @@ const Header = () => {
     const links = <>
 
         <li><NavLink to="/" >Home</NavLink></li>
+        <li><NavLink to="about">About</NavLink></li>
         {role === "user" && !roleLoading &&
             <>
                 <li> <NavLink to="find-doctors">Find Doctors</NavLink></li>
@@ -61,7 +62,7 @@ const Header = () => {
 
     return (
         // <section>
-        <div className="navbar bg-base-100 shadow-sm w-full sm:px-10">
+        <div className="navbar sticky top-0 z-50 w-full bg-base-100/95 shadow-sm backdrop-blur sm:px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
