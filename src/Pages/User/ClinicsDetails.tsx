@@ -25,8 +25,8 @@ const ClinicsDetails = () => {
         queryKey: ["detail", id],
         queryFn: async () => {
             const [clinicsRes, doctorsRes] = await Promise.all([
-                axios.get(`http://localhost:8000/clinic/${id}`),
-                axios.get(`http://localhost:8000/doctors?id=${id}`),
+                axios.get(`https://smartcare-server.vercel.app/clinic/${id}`),
+                axios.get(`https://smartcare-server.vercel.app/doctors?id=${id}`),
             ]);
 
             return {

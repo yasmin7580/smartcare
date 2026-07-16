@@ -56,7 +56,7 @@ const Home = () => {
     const { data, isLoading } = useQuery<HomeData>({
         queryKey: ["homeData"],
         queryFn: async () => {
-            const result = await axios.get("http://localhost:8000/homeData")
+            const result = await axios.get("https://smartcare-server.vercel.app/homeData")
             return result.data
         }
     })

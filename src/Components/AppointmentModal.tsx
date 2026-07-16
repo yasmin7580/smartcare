@@ -39,7 +39,7 @@ const AppointmentModal = ({ modalRef, data }: AppointmentModalProps) => {
 
         console.log({ ...formData, ...appointmentDetails })
         try {
-            const { data: result } = await axios.post('http://localhost:8000/appointment', { ...formData, ...appointmentDetails })
+            const { data: result } = await axios.post('https://smartcare-server.vercel.app/appointment', { ...formData, ...appointmentDetails })
             if (!result.insertedId) {
                 // toast.error("Submit failed")
                 throw new Error("Submit failed")

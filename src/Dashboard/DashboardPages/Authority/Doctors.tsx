@@ -40,7 +40,7 @@ const Doctors = () => {
     const { data: clinic, isLoading: clinicLoading, } = useQuery({
         queryKey: ["clinics"],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/clinic?userEmail=${user?.email}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/clinic?userEmail=${user?.email}`)
             return result.data
         },
         enabled: user ? true : false
@@ -49,7 +49,7 @@ const Doctors = () => {
     const { data: doctors, isLoading: doctorLoading, refetch } = useQuery({
         queryKey: ["doctors"],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/doctors?id=${clinic._id}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/doctors?id=${clinic._id}`)
             return result.data
         },
         enabled: !clinicLoading
@@ -107,7 +107,7 @@ const Doctors = () => {
             if (result.isConfirmed) {
                 const toastId = toast.loading("Deleting")
                 try {
-                    const { data: result } = await axios.delete(`http://localhost:8000/doctor/${id}`)
+                    const { data: result } = await axios.delete(`https://smartcare-server.vercel.app/doctor/${id}`)
 
                     if (result.deletedCount !== 1) {
                         toast.dismiss(toastId)
@@ -151,7 +151,7 @@ const Doctors = () => {
                 formData.image = photoUrl
             }
 
-            const { data: result } = await axios.patch(`http://localhost:8000/doctor`, { id, formData })
+            const { data: result } = await axios.patch(`https://smartcare-server.vercel.app/doctor`, { id, formData })
             if (result.modifiedCount !== 1) {
                 toast.dismiss(toastId)
                 throw new Error("Something went wrong")

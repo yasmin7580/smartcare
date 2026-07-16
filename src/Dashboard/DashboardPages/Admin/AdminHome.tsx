@@ -56,7 +56,7 @@ const AdminHome = () => {
         queryKey: ["adminHome"],
         queryFn: async () => {
             const res = await axios.get(
-                "http://localhost:8000/adminHome"
+                "https://smartcare-server.vercel.app/adminHome"
             );
 
             return res.data;

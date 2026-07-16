@@ -21,7 +21,7 @@ const MedicalAuthority = () => {
     const { data: clinics,  refetch } = useQuery({
         queryKey: ["medical-authority"],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/clinics?status=pending`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/clinics?status=pending`)
             return result.data
         }
     })
@@ -30,7 +30,7 @@ const MedicalAuthority = () => {
     const handleStatus = async (id: string, status: string) => {
         const toastId = toast.loading("Updating")
         try {
-            await axios.patch("http://localhost:8000/clinic", { id, status })
+            await axios.patch("https://smartcare-server.vercel.app/clinic", { id, status })
             await refetch() // done
             toast.dismiss(toastId)
             toast.success(status)

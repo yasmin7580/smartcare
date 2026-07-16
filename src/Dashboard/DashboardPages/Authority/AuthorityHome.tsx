@@ -63,7 +63,7 @@ const AuthorityHome = () => {
     const { data, isLoading } = useQuery<AuthorityData>({
         queryKey: ["authorityHome", user?.email],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/authorityHome?email=${user?.email}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/authorityHome?email=${user?.email}`)
             return result.data
         },
         enabled: !!user?.email

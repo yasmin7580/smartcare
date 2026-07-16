@@ -23,7 +23,7 @@ const UserProfile = () => {
     const { data: user, isLoading, refetch } = useQuery({
         queryKey: [theUser],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:8000/user?email=${theUser?.email}`)
+            const { data } = await axios.get(`https://smartcare-server.vercel.app/user?email=${theUser?.email}`)
             return data
         },
         enabled: !!theUser
@@ -67,7 +67,7 @@ const UserProfile = () => {
             }
             await updateProfile(auth.currentUser, { displayName: name, photoURL: photoUrl })
 
-            await axios.patch(`http://localhost:8000/userUpdate?email=${user?.email}`, { name: name, photoUrl: photoUrl || user.photoUrl })
+            await axios.patch(`https://smartcare-server.vercel.app/userUpdate?email=${user?.email}`, { name: name, photoUrl: photoUrl || user.photoUrl })
             await refetch()
             toast.dismiss(toastId)
             toast.success('Updated')

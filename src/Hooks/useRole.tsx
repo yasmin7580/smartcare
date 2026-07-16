@@ -9,7 +9,7 @@ const useRole = () => { // role, roleLoading
     const { data: role, isLoading: roleLoading } = useQuery({ // cache roleadmin@gmail.com = admin // userEmail
         queryKey: ["role", user?.email],
         queryFn: async () => {
-            const result = await axiosSecure.get(`http://localhost:8000/role?email=${user?.email}`) // { role:'admin'}
+            const result = await axiosSecure.get(`https://smartcare-server.vercel.app/role?email=${user?.email}`) // { role:'admin'}
             // console.log("result from query",result)
             return result.data.role
         },

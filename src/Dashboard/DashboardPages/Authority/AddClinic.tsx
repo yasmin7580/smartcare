@@ -18,7 +18,7 @@ const AddClinic = () => {
     const { data, isLoading, refetch } = useQuery({
         queryKey: ["clinics"],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/clinic?userEmail=${user?.email}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/clinic?userEmail=${user?.email}`)
             return result.data
         },
         enabled: user ? true : false

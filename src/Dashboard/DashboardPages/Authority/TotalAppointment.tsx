@@ -31,7 +31,7 @@ const TotalAppointment = () => {
     const { data: clinic, isLoading: clinicLoading } = useQuery<Clinic | null>({
         queryKey: ['clinic', user?.email],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/clinic?userEmail=${user?.email}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/clinic?userEmail=${user?.email}`)
             return result.data
         },
         enabled: !!user
@@ -40,7 +40,7 @@ const TotalAppointment = () => {
     const { data: appointments = [], isLoading: appointmentLoading } = useQuery<Appointment[]>({
         queryKey: ['clinic-appointments', clinic?._id],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/appointment?clinicId=${clinic?._id}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/appointment?clinicId=${clinic?._id}`)
             return result.data
         },
         enabled: !!clinic?._id

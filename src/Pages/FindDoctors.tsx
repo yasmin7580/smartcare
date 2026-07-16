@@ -29,7 +29,7 @@ const FindDoctors = () => {
     const { data: doctors, isLoading } = useQuery({
         queryKey: ["detail"],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:8000/doctors`)
+            const { data } = await axios.get(`https://smartcare-server.vercel.app/doctors`)
             return data
         },
 

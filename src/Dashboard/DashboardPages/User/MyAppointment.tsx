@@ -26,7 +26,7 @@ const MyAppointment = () => {
     const { data: appointments, isLoading, refetch } = useQuery({
         queryKey: ["my-appointments"],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/appointment?userEmail=${user?.email}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/appointment?userEmail=${user?.email}`)
             return result.data
         },
         enabled: !!user
@@ -50,7 +50,7 @@ const MyAppointment = () => {
                 const toastId = toast.loading("Canceling")
                 const status = "cancel"
                 try {
-                    const { data: result } = await axios.patch(`http://localhost:8000/appointment?id=${id}&status=${status}`)
+                    const { data: result } = await axios.patch(`https://smartcare-server.vercel.app/appointment?id=${id}&status=${status}`)
                     if (result.modifiedCount !== 1) {
                         throw new Error("Cancel failed")
                     }

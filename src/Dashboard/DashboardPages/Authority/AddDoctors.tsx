@@ -63,7 +63,7 @@ const AddDoctors = () => {
     const { data: clinic, isLoading } = useQuery({
         queryKey: ['clinic', user?.email],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/clinic?userEmail=${user?.email}`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/clinic?userEmail=${user?.email}`)
             return result.data
         },
         enabled: !!user
@@ -110,7 +110,7 @@ const AddDoctors = () => {
         console.log(formData)
 
         try {
-            const { data: result } = await axios.post("http://localhost:8000/doctor", formData)
+            const { data: result } = await axios.post("https://smartcare-server.vercel.app/doctor", formData)
             if (!result.insertedId) {
                 throw new Error("Something Went Wrong")
             }

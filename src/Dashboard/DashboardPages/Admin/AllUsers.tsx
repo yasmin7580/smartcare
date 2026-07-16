@@ -19,7 +19,7 @@ const AllUsers = () => {
     const { data: users, refetch } = useQuery({
         queryKey: ["all-users"],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:8000/users`)
+            const result = await axios.get(`https://smartcare-server.vercel.app/users`)
             return result.data
 
         }
@@ -30,7 +30,7 @@ const AllUsers = () => {
     const handleBlock = async (id: string, status: boolean) => { // current status block
         const toastId = toast.loading(status ? "Unblocking" : "Blocking")
         try {
-            const { data: result } = await axios.patch(`http://localhost:8000/user`, { id, status: !status })
+            const { data: result } = await axios.patch(`https://smartcare-server.vercel.app/user`, { id, status: !status })
             console.log(result);
             if (result.modifiedCount !== 1) {
                 toast.dismiss(toastId)

@@ -18,7 +18,7 @@ const Clinics = () => {
     const { data: clinics = [], isLoading, isFetching } = useQuery({
         queryKey: ["clinic", search],
         queryFn: async ({ signal }) => {
-            const { data } = await axios.get("http://localhost:8000/clinics?status=VERIFIED", {
+            const { data } = await axios.get("https://smartcare-server.vercel.app/clinics?status=VERIFIED", {
                 params: { name: search },
                 signal,
             })

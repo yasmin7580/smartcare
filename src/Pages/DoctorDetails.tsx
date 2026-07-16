@@ -21,7 +21,7 @@ const DoctorDetails = () => {
         queryKey: ["detail", id],
         queryFn: async () => {
             const { data } = await axios.get(
-                `http://localhost:8000/doctor/${id}`
+                `https://smartcare-server.vercel.app/doctor/${id}`
             );
 
             return data

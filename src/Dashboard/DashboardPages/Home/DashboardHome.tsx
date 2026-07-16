@@ -8,7 +8,7 @@ const DashboardHome = () => {
     // const navigate = useNavigate()
     const { role, roleLoading } = useRole()
     if (roleLoading) {
-        return "Loading"
+        return "Loading."
     }
     if (role === "user") {
         // navigate()
