@@ -85,7 +85,7 @@ const Banner = () => {
                                 </p>
 
                                 <Link
-                                    to="/find-doctor"
+                                    to="/find-doctors"
                                     className="group mt-10 inline-flex items-center gap-3 rounded-xl bg-red-600 px-7 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-700 hover:shadow-2xl"
                                 >
                                     Find Doctor

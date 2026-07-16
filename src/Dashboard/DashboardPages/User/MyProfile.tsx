@@ -8,14 +8,14 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../../../firebase.init";
 
-type User = {
-    _id: string;
-    name: string;
-    email: string;
-    role: string;
-    photoUrl: string;
-    isBlock: boolean;
-};
+// type User = {
+//     _id: string;
+//     name: string;
+//     email: string;
+//     role: string;
+//     photoUrl: string;
+//     isBlock: boolean;
+// };
 
 const UserProfile = () => {
     const { user: theUser } = useAuth()

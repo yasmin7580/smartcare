@@ -2,6 +2,7 @@
 import useRole from '../../../Hooks/useRole';
 import { Navigate } from 'react-router';
 import AdminHome from '../Admin/AdminHome';
+import AuthorityHome from '../Authority/AuthorityHome';
 
 const DashboardHome = () => {
     // const navigate = useNavigate()
@@ -17,13 +18,12 @@ const DashboardHome = () => {
     if (role === "admin") {
         // navigate()
         return <AdminHome></AdminHome>
-
     }
-    return (
-        <div>
-            Home1
-        </div>
-    );
+    if (role === "authority") {
+        // navigate()
+        return <AuthorityHome></AuthorityHome>
+    }
+
 };
 
 export default DashboardHome;

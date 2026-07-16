@@ -158,7 +158,7 @@ const DoctorDetails = () => {
 
 
             </div>
-            <AppointmentModal refElement={modalElement} data={doctor}></AppointmentModal>
+            <AppointmentModal modalRef={modalElement} data={doctor}></AppointmentModal>
 
         </div>
     );

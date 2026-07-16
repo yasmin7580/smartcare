@@ -61,7 +61,7 @@ const Header = () => {
 
     return (
         // <section>
-        <div className="navbar bg-base-100 shadow-sm w-full">
+        <div className="navbar bg-base-100 shadow-sm w-full sm:px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -75,7 +75,7 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="font-medium  text-xl text-red-600">SmartCare</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
