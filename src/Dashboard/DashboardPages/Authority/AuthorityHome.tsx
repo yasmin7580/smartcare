@@ -66,12 +66,13 @@ const AuthorityHome = () => {
             const result = await axios.get(`http://localhost:8000/authorityHome?email=${user?.email}`)
             return result.data
         },
-        enabled: !!user
+        enabled: !!user?.email
     })
 
     if (isLoading) {
         return <Loading></Loading>
     }
+    console.log(data)
 
     if (!data?.clinic) {
         return (

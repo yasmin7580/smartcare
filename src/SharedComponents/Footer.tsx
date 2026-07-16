@@ -2,12 +2,12 @@
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router";
 
-type UserRole = "patient" | "doctor" | "admin" | null;
+// type UserRole = "patient" | "doctor" | "admin" | null;
 
-type FooterProps = {
-    user: boolean;
-    role: UserRole;
-};
+// type FooterProps = {
+//     user: boolean;
+//     role: UserRole;
+// };
 
 const Footer = () => {
     const guestLinks = [
